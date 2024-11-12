@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png">
+    <title>EPL Institude</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="img/EPL.png" alt="EPL Logo">
+    </div>
+
+    <nav>
+        <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="technology.html"><i class="fa-solid fa-cogs"></i> Technology</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-user"></i> About</a></li>
+            <li><a href="quiz.html"><i class="fa-solid fa-question-circle"></i> Quiz</a></li>
+            <li><a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                        
+        </ul>
+    </nav>
+
+    <div class="navbar" id="navbar">
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="technology.html"><i class="fa-solid fa-cogs"></i> Technology</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-image"></i> Gallery</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-user"></i> About</a></li>
+            <li><a href="quiz.html"><i class="fa-solid fa-question-circle"></i> Quiz</a></li>
+            <li><a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="img/img1.jpg" alt="Slide 1">
+                <div class="caption">Caption for Slide 1</div>
+            </div>
+            <div class="slide">
+                <img src="img/img2.jpeg" alt="Slide 2">
+                <div class="caption">Caption for Slide 2</div>
+            </div>
+            <div class="slide">
+                <img src="img/img3.jpg" alt="Slide 3">
+                <div class="caption">Caption for Slide 3</div>
+            </div>
+        </div>
+    </div>
+    <div class="box-container">
+        <div class="box box1">
+            <i class="fa-regular fa-user"></i>
+            <h4>Placement Support</h4>
+            <p>Get personalized help with job placements.</p>
+            <p>We offer extensive support to help you succeed.</p>
+        </div>
+        <div class="box box2">
+            <i class="fa-solid fa-comments"></i>
+            <h4>Online/Offline Guide</h4>
+            <p>Choose between online and offline classes.</p>
+            <p>Flexible learning options to fit your needs.</p>
+        </div>
+        <div class="box box3">
+            <i class="fa-solid fa-users-rectangle"></i>
+            <h4>Mock Interview</h4>
+            <p>Practice with realistic mock interviews.</p>
+            <p>Boost your confidence before the real thing.</p>
+        </div>
+        <div class="box box4">
+            <i class="fa-solid fa-mobile"></i>
+            <h4>Call : +91 7741954147 <br> +91 9158557929</h4>
+            <p>Reach out for more information or assistance.</p>
+            <p>We're here to help you with any queries.</p>
+        </div>
+    </div>
+
+    <h1>Gallery</h1> 
+    <div class="gallery">
+       
+        <div class="gallery-item" data-img="img/img1.jpg">
+            <img src="img/img.jpeg" alt="Image 1">
+            <div class="overlay">
+                <div class="overlay-text">Caption for Image 1</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-img="img/img2.jpeg">
+            <img src="img/mock/img6.png" alt="Image 2">
+            <div class="overlay">
+                <div class="overlay-text">Caption for Image 2</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-img="img/img3.jpg">
+            <img src="img/img7.jpeg" alt="Image 3">
+            <div class="overlay">
+                <div class="overlay-text">Caption for Image 3</div>
+            </div>
+        </div>
+        <div class="gallery-item" data-img="img/img2.jpeg">
+            <img src="img/mock/img11.png" alt="Image 4">
+            <div class="overlay">
+                <div class="overlay-text">Caption for Image 4</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div class="modal" id="modal">
+        <div class="modal-content modal-show">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <img src="" alt="Full-size image" id="modal-image">
+        </div>
+    </div>
+
+    <section id="contact-us">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-person">
+                <h3>Mr. Goraksh Dhakane</h3>
+                <p>Education: MCA</p>
+                <p>Example - TCS</p>
+                <p>Phone: +91 7741954147 </p>
+                <p>Social Media:</p>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/gorakash-dhakane-93973b233/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/mr.dhakane/?igsh=bjI5bnZlcHRncDVi" target="_blank"><i class="fab fa-instagram"></i>Instagram</a></li>
+                </ul>
+            </div>
+            <div class="contact-person">
+                <h3>Mr. Ganesh Maske</h3>
+                <p>Education: MCA</p>
+                <p>Example - TCS, HBSC</p>
+                <p>Phone: +91 9158557929</p>
+                <p>Social Media:</p>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/ganeshmhaske/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/ganeshmhaske_07/?igsh=OGZ2Z29sZ3JmaWs2" target="_blank"><i class="fab fa-instagram"></i>Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo.jpeg" alt="EPL Institute Logo">
+            </div>
+            <div class="footer-about">
+                <h3>EPL Institute</h3> <br>
+                <p><i class="fas fa-laptop-code"></i> Learn programming languages with expert guidance and build a strong foundation in technology.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> In front of New Arts Commerce College, Shevgaon</p> <br>
+                <p><i class="fas fa-phone"></i> <strong>Phone:</strong>  +91 7741954147/+91 9158557929</p> <br>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> eplclsonline@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a><br> <br>
+                <a href="https://www.instagram.com/epl_class/?igsh=MTk3czg3YmdmeGhnaw%3D%3D" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul style="list-style: none;">
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li> <br>
+                    <li><a href="technology.html"><i class="fas fa-graduation-cap"></i> Courses</a></li> <br>
+                    <li><a href="#contact-us"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><b># EPL Institute
+            </b></p>
+        </div>
+    </footer>
+
+   
+      
+     <script src="js/script.js"></script>
+     <script>
+        // Add a fade-in effect on page load
+        window.addEventListener('load', () => {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.classList.add('visible');
+                }, index * 200); // Stagger the fade-in effect by 200ms for each box
+            });
+        });
+    </script>
+</body>
+</html>

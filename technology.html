@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            animation: backgroundFade 5s infinite alternate;
+        }
+        .home-button {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: #1b9c85;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s, transform 0.3s;
+            animation: bounceIn 1s ease-in-out;
+        }
+        .home-button:hover {
+            background-color: #ff004f;
+            transform: rotate(360deg);
+        }
+        h1 {
+            color: #1b9c85;
+            text-align: center;
+            margin-top: 60px;
+            animation: fadeIn 2s ease-in;
+        }
+        .course-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .course-box {
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            animation: slideIn 1s ease-in-out;
+        }
+        .course-box:hover {
+            transform: translateY(-15px) scale(1.05);
+            background-color: #333;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+        }
+        .course-icon {
+            font-size: 40px;
+            color: #1b9c85;
+            margin-bottom: 10px;
+            transition: color 0.3s, transform 0.3s;
+            animation: pulse 1.5s infinite;
+        }
+        .course-box:hover .course-icon {
+            color: #ff004f;
+            transform: rotate(360deg);
+        }
+        .course-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ff004f;
+            transition: color 0.3s, transform 0.3s;
+            animation: titleSlideIn 1s ease-in;
+        }
+        .course-box:hover .course-title {
+            color: #1b9c85;
+            transform: scale(1.05);
+        }
+        .course-description {
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: descriptionFadeIn 1s ease-in forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .course-box {
+                width: 100%;
+                max-width: 90%;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-button {
+                right: 10px;
+                top: 10px;
+                font-size: 20px;
+                padding: 8px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-top: 40px;
+            }
+
+            .course-title {
+                font-size: 18px;
+            }
+
+            .course-description {
+                font-size: 14px;
+            }
+
+            .course-icon {
+                font-size: 30px;
+            }
+        }
+
+        /* Keyframes */
+        @keyframes backgroundFade {
+            0% { background-color: #000; }
+            100% { background-color: #333; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes titleSlideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes descriptionFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="home-button">
+        <a href="index.html" style="color: inherit; text-decoration: none;">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <h1>Our Courses</h1>
+    
+    <div class="course-container">
+        <div class="course-box">
+            <i class="fas fa-laptop-code course-icon"></i>
+            <div class="course-title">C Programming</div>
+            <div class="course-description">Master the fundamentals of C programming, including variables, loops, conditionals, and functions. This course covers the basics of procedural programming and is perfect for beginners.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-laptop-code course-icon"></i>
+            <div class="course-title">C++ Programming</div>
+            <div class="course-description">Dive into object-oriented programming with C++. Learn about classes, objects, inheritance, and polymorphism. This course is designed to enhance your programming skills and prepare you for complex projects.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-laptop-code course-icon"></i>
+            <div class="course-title">Java Programming</div>
+            <div class="course-description">Explore Java, one of the most widely used programming languages. This course covers object-oriented programming concepts, exception handling, and Java's extensive libraries, preparing you for enterprise-level software development.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-code course-icon"></i>
+            <div class="course-title">HTML & CSS</div>
+            <div class="course-description">Learn the basics of web design with HTML and CSS. This course covers everything from structuring web pages to styling them, including responsive design principles for a modern web experience.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-code course-icon"></i>
+            <div class="course-title">JavaScript</div>
+            <div class="course-description">Enhance your web development skills with JavaScript. This course focuses on making interactive web pages, including handling events, manipulating the DOM, and using JavaScript frameworks and libraries.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-database course-icon"></i>
+            <div class="course-title">MySQL</div>
+            <div class="course-description">Understand database management with MySQL. Learn how to design, query, and maintain databases using SQL. This course covers relational database concepts and best practices for data management.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-server course-icon"></i>
+            <div class="course-title">PHP</div>
+            <div class="course-description">Develop server-side applications with PHP. This course covers PHP syntax, form handling, and database integration, providing you with the skills needed to build dynamic web applications.</div>
+        </div>
+        <div class="course-box">
+            <i class="fas fa-code-branch course-icon"></i>
+            <div class="course-title">Data Structures</div>
+            <div class="course-description">Learn about fundamental data structures such as arrays, linked lists, stacks, queues, and trees. This course emphasizes the importance of data organization and efficiency in programming and algorithm design.</div>
+        </div>
+    </div>
+
+</body>
+</html>

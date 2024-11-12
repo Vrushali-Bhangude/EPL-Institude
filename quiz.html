@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text color */
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: black;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        main {
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        #quiz {
+            background: #333; /* Dark background for the quiz section */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            color: #fff; /* White text color */
+            animation: slideIn 1s ease-out;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .question h3 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+        
+        pre {
+            background-color: #444; /* Slightly lighter background for code blocks */
+            border: 1px solid #555;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            color: #ddd; /* Light text color for code blocks */
+            font-size: 14px; /* Adjusted font size for better readability */
+            animation: fadeIn 1s ease-in;
+        }
+        
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: #1b9c85;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+            animation: bounceIn 1s ease-in;
+        }
+        
+        button:hover {
+            background-color: #17a589;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: #1b9c85;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #444; /* Dark background for the result box */
+            border: 1px solid #555;
+            border-radius: 4px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .home-tab {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #1b9c85;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .home-tab:hover {
+            background-color: #17a589;
+        }
+
+        .progress {
+            background: #1b9c85;
+            height: 5px;
+            border-radius: 5px;
+            margin: 10px 0;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: bla;
+            height: 100%;
+            width: 0; /* Will be dynamically set with JavaScript */
+            transition: width 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .home-tab {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            #quiz {
+                padding: 15px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            footer {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .home-tab {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            #quiz {
+                padding: 10px;
+            }
+
+            button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            footer {
+                padding: 6px;
+                font-size: 12px;
+            }
+
+            .question h3 {
+                font-size: 16px;
+            }
+
+            pre {
+                font-size: 14px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-tab" onclick="window.location.href='index.html';">Home</div>
+    
+    <header>
+        <h1>IT Quiz</h1>
+    </header>
+    <main>
+        <section id="quiz">
+            <h2>Test Your Knowledge</h2>
+            <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+            <form id="quiz-form">
+    <fieldset>
+        <legend>Choose the correct answer for each question:</legend>
+
+        <!-- Updated Question 1 -->
+        <div class="question">
+            <h3>1. Identify valid identifiers:</h3>
+            <label><input type="radio" name="q1" value="A"> A) Int, 123, 01A</label>
+            <label><input type="radio" name="q1" value="B"> B) _123, _printf, xyz</label>
+            <label><input type="radio" name="q1" value="C"> C) PI, if, _else</label>
+            <label><input type="radio" name="q1" value="D"> D) 0xABC</label>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h3>2. What will be the output of the following statement?</h3>
+            <pre><code>printf("%d bytes", sizeof(1/2));</code></pre>
+            <label><input type="radio" name="q2" value="A"> A) 2 bytes</label>
+            <label><input type="radio" name="q2" value="B"> B) 4 bytes</label>
+            <label><input type="radio" name="q2" value="C"> C) 8 bytes</label>
+            <label><input type="radio" name="q2" value="D"> D) 3 bytes</label>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h3>3. Find the output of the following code:</h3>
+            <pre><code>int a = 5;
+printf("%d", a++ + a++ + a++);</code></pre>
+            <label><input type="radio" name="q3" value="A"> A) 15</label>
+            <label><input type="radio" name="q3" value="B"> B) 13</label>
+            <label><input type="radio" name="q3" value="C"> C) 16</label>
+            <label><input type="radio" name="q3" value="D"> D) 18</label>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <h3>4. Find the output of the following loop:</h3>
+            <pre><code>for (printf("1"); printf("2"); printf("3")) 
+    printf("4");</code></pre>
+            <label><input type="radio" name="q4" value="A"> A) 1 2 4</label>
+            <label><input type="radio" name="q4" value="B"> B) 1 2 3 4</label>
+            <label><input type="radio" name="q4" value="C"> C) Print "1" once, then "2" and "4" infinitely</label>
+            <label><input type="radio" name="q4" value="D"> D) 1 2 4 3</label>
+        </div>
+
+        <div class="question">
+            <h3>5. Does `printf()` return the number of printable characters?</h3>
+            <label><input type="radio" name="q5" value="A"> A) True</label>
+            <label><input type="radio" name="q5" value="B"> B) False</label>
+        </div>
+
+        <!-- Updated Question 6 -->
+        <div class="question">
+            <h3>6. What will be the output of the following loop?</h3>
+            <pre><code>for( ; ;) { printf("IT WEEK"); }</code></pre>
+            <label><input type="radio" name="q6" value="A"> A) Compiler error</label>
+            <label><input type="radio" name="q6" value="B"> B) Runtime error</label>
+            <label><input type="radio" name="q6" value="C"> C) Prints "IT WEEK" infinitely</label>
+            <label><input type="radio" name="q6" value="D"> D) No option</label>
+        </div>
+
+        <!-- Updated Question 7 -->
+        <div class="question">
+            <h3>7. What is the entry point of a C program?</h3>
+            <label><input type="radio" name="q7" value="A"> A) #include</label>
+            <label><input type="radio" name="q7" value="B"> B) main(argc, char *argv)</label>
+            <label><input type="radio" name="q7" value="C"> C) _start()</label>
+            <label><input type="radio" name="q7" value="D"> D) main()</label>
+        </div>
+
+        <!-- Updated Question 8 -->
+        <div class="question">
+            <h3>8. Find the output:</h3>
+            <pre><code>#include 
+#define fun main
+int fun(void) { 
+    printf("IT WEEK 2020"); 
+}</code></pre>
+            <label><input type="radio" name="q8" value="A"> A) IT WEEK 2020</label>
+            <label><input type="radio" name="q8" value="B"> B) ERROR</label>
+            <label><input type="radio" name="q8" value="C"> C) Not executed</label>
+            <label><input type="radio" name="q8" value="D"> D) Write main function</label>
+        </div>
+
+        <!-- Updated Question 9 -->
+        <div class="question">
+            <h3>9. What will be the output?</h3>
+            <pre><code>float a = 10.5;
+if(a == 10.5) {
+    printf("okk by 2019");
+} else {
+    printf("welcome 2020");
+}</code></pre>
+            <label><input type="radio" name="q9" value="A"> A) True</label>
+            <label><input type="radio" name="q9" value="B"> B) Welcome 2020</label>
+            <label><input type="radio" name="q9" value="C"> C) Okk by 2019</label>
+            <label><input type="radio" name="q9" value="D"> D) False</label>
+        </div>
+
+        <!-- Updated Question 10 -->
+        <div class="question">
+            <h3>10. Find the output:</h3>
+            <pre><code>void main(void) {
+    int a = 2;
+    if(a == (2, 1)) {
+        printf("hellow");
+    } else {
+        printf("BCS Department");
+    }
+}</code></pre>
+            <label><input type="radio" name="q10" value="A"> A) Hellow</label>
+            <label><input type="radio" name="q10" value="B"> B) BCS Department</label>
+            <label><input type="radio" name="q10" value="C"> C) Compiler time error</label>
+            <label><input type="radio" name="q10" value="D"> D) Syntax error</label>
+        </div>
+        <div class="question">
+            <h3>11. What is the output of the following program?</h3>
+            <pre><code>
+int i = 10;
+static int y = x;
+if (x == y) {
+    printf("Equal");
+} else {
+    printf("Not Equal");
+}
+            </code></pre>
+            <label><input type="radio" name="q11" value="A"> A) Equal</label>
+            <label><input type="radio" name="q11" value="B"> B) Not Equal</label>
+            <label><input type="radio" name="q11" value="C"> C) Compiler error</label>
+            <label><input type="radio" name="q11" value="D"> D) None</label>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question">
+            <h3>12. What is the output?</h3>
+            <pre><code>
+int i = 5;
+int y = ++i * i++;
+printf("%d", y);
+            </code></pre>
+            <label><input type="radio" name="q12" value="A"> A) 25</label>
+            <label><input type="radio" name="q12" value="B"> B) 30</label>
+            <label><input type="radio" name="q12" value="C"> C) Undefined Behaviour</label>
+            <label><input type="radio" name="q12" value="D"> D) 36</label>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question">
+            <h3>13. Find out the output:</h3>
+            <pre><code>
+enum x {a = 1, b, c, d, f = 45, y};
+printf("y = %d", y);
+            </code></pre>
+            <label><input type="radio" name="q13" value="A"> A) 5</label>
+            <label><input type="radio" name="q13" value="B"> B) 6</label>
+            <label><input type="radio" name="q13" value="C"> C) 2</label>
+            <label><input type="radio" name="q13" value="D"> D) 46</label>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question">
+            <h3>14. What is the output?</h3>
+            <pre><code>
+char arr[5] = "welcome to all bcs student";
+printf("%s", arr);
+            </code></pre>
+            <label><input type="radio" name="q14" value="A"> A) welcome to all bcs student</label>
+            <label><input type="radio" name="q14" value="B"> B) welcome</label>
+            <label><input type="radio" name="q14" value="C"> C) Compiler time error</label>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question">
+            <h3>15. What is the output of the following program?</h3>
+            <pre><code>
+unsigned int a = 010;
+printf("%d", a);
+            </code></pre>
+            <label><input type="radio" name="q15" value="A"> A) 010</label>
+            <label><input type="radio" name="q15" value="B"> B) 10</label>
+            <label><input type="radio" name="q15" value="C"> C) 8</label>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="question">
+            <h3>16. Find out the output:</h3>
+            <pre><code>
+int a[2][2] = {{10}, {20}};
+printf("%d", a[0][0]);
+printf("%d", a[0][1]);
+            </code></pre>
+            <label><input type="radio" name="q16" value="A"> A) 10 20</label>
+            <label><input type="radio" name="q16" value="B"> B) 10 0</label>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question">
+            <h3>17. What is the full form of "COMPUTER"?</h3>
+            <label><input type="radio" name="q17" value="A"> A) Common Operating Machine Particularly Used for Technology Engineering Research</label>
+        </div>
+
+        <!-- Question 18 -->
+        <div class="question">
+            <h3>18. What is the output of the given program?</h3>
+            <pre><code>
+register int i = 10;
+int *j = &i;
+printf("%d", j);
+return 258;
+            </code></pre>
+            <label><input type="radio" name="q18" value="A"> A) 10</label>
+            <label><input type="radio" name="q18" value="B"> B) Garbage</label>
+            <label><input type="radio" name="q18" value="C"> C) Compiler time error</label>
+        </div>
+
+        <div class="question">
+            <h3>19. When was the first computer invented?</h3>
+            <label><input type="radio" name="q19" value="A"> A) Dennis Ritchie</label>
+            <label><input type="radio" name="q19" value="B"> B) Bjarne Stroustrup</label>
+            <label><input type="radio" name="q19" value="C"> C) James Gosling</label>
+            <label><input type="radio" name="q19" value="D"> D) Charles Babbage</label>
+        </div>
+
+        <!-- Question 20 -->
+        <div class="question">
+            <h3>20. What is the output of the following program?</h3>
+            <pre><code>
+void main() {
+    printf("hi""%s", "TYBCS""Student");
+}
+            </code></pre>
+            <label><input type="radio" name="q20" value="A"> A) hi</label>
+            <label><input type="radio" name="q20" value="B"> B) hi TYBCSStudent</label>
+            <label><input type="radio" name="q20" value="C"> C) hi %s TYBCS Student</label>
+            <label><input type="radio" name="q20" value="D"> D) Error</label>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question">
+            <h3>21. Find out the correct output:</h3>
+            <pre><code>
+void main(int) {
+    int _ = 10;
+    int __ = 20;
+    int ___ = _ + __;
+    printf("addition=%d", ___);
+}
+            </code></pre>
+            <label><input type="radio" name="q21" value="A"> A) No output</label>
+            <label><input type="radio" name="q21" value="B"> B) Compiler error</label>
+            <label><input type="radio" name="q21" value="C"> C) addition=30</label>
+            <label><input type="radio" name="q21" value="D"> D) Linking error</label>
+        </div>
+
+        <!-- Question 22 -->
+        <div class="question">
+            <h3>22. What is the datatype of FILE?</h3>
+            <label><input type="radio" name="q22" value="A"> A) Union</label>
+            <label><input type="radio" name="q22" value="B"> B) Pointer</label>
+            <label><input type="radio" name="q22" value="C"> C) Structure</label>
+            <label><input type="radio" name="q22" value="D"> D) Integer</label>
+        </div>
+
+        <!-- Question 23 -->
+        <div class="question">
+            <h3>23. Which of the following storage class variables cannot be used with a pointer?</h3>
+            <label><input type="radio" name="q23" value="A"> A) Extern</label>
+            <label><input type="radio" name="q23" value="B"> B) Static</label>
+            <label><input type="radio" name="q23" value="C"> C) Register</label>
+            <label><input type="radio" name="q23" value="D"> D) Both A and B</label>
+        </div>
+
+        <!-- Question 24 -->
+        <div class="question">
+            <h3>24. Reusability of code in C is supported by:</h3>
+            <label><input type="radio" name="q24" value="A"> A) Functions</label>
+            <label><input type="radio" name="q24" value="B"> B) Macros</label>
+            <label><input type="radio" name="q24" value="C"> C) Pointers</label>
+            <label><input type="radio" name="q24" value="D"> D) Files</label>
+        </div>
+
+        <!-- Question 25 -->
+        <div class="question">
+            <h3>25. What is the output of the following program?</h3>
+            <pre><code>
+#include <stdio.h>
+#define sq(a) a*a
+void main() {
+    printf("%d", sq(3+2));
+}
+            </code></pre>
+            <label><input type="radio" name="q25" value="A"> A) 25</label>
+            <label><input type="radio" name="q25" value="B"> B) Compiler error</label>
+            <label><input type="radio" name="q25" value="C"> C) 11</label>
+            <label><input type="radio" name="q25" value="D"> D) 10</label>
+        </div>
+
+        <!-- Question 26 -->
+        <div class="question">
+            <h3>26. A switch statement is similar to:</h3>
+            <label><input type="radio" name="q26" value="A"> A) For</label>
+            <label><input type="radio" name="q26" value="B"> B) Do-while</label>
+            <label><input type="radio" name="q26" value="C"> C) While</label>
+            <label><input type="radio" name="q26" value="D"> D) Multiple if-else if-else</label>
+        </div>
+
+        <!-- Question 27 -->
+        <div class="question">
+            <h3>27. Which of the following functions returns an integer value?</h3>
+            <label><input type="radio" name="q27" value="A"> A) Strcmp</label>
+            <label><input type="radio" name="q27" value="B"> B) Strcpy</label>
+            <label><input type="radio" name="q27" value="C"> C) Strstr</label>
+            <label><input type="radio" name="q27" value="D"> D) Strcat</label>
+        </div>
+
+        <!-- Question 28 -->
+        <div class="question">
+            <h3>28. What is the output of the following program?</h3>
+            <pre><code>
+void main() {
+    int p = 200;
+    printf("%d", printf("%d", p), scanf("%d", &p));
+}
+            </code></pre>
+            <label><input type="radio" name="q28" value="A"> A) 200 3</label>
+            <label><input type="radio" name="q28" value="B"> B) 3 200</label>
+            <label><input type="radio" name="q28" value="C"> C) Error</label>
+            <label><input type="radio" name="q28" value="D"> D) 200</label>
+        </div>
+
+        <!-- Question 29 -->
+        <div class="question">
+            <h3>29. 'C' is a:</h3>
+            <label><input type="radio" name="q29" value="A"> A) Low-level language</label>
+            <label><input type="radio" name="q29" value="B"> B) Machine language</label>
+            <label><input type="radio" name="q29" value="C"> C) High-level language</label>
+            <label><input type="radio" name="q29" value="D"> D) Middle-level language</label>
+        </div>
+
+        <!-- Question 30 -->
+        <div class="question">
+            <h3>30. Which function does not return an integer value?</h3>
+            <label><input type="radio" name="q30" value="A"> A) printf</label>
+            <label><input type="radio" name="q30" value="B"> B) scanf</label>
+            <label><input type="radio" name="q30" value="C"> C) strcpy</label>
+            <label><input type="radio" name="q30" value="D"> D) strlen</label>
+        </div>
+
+        <!-- Question 31 -->
+        <div class="question">
+            <h3>31. What is the output of the following program?</h3>
+            <pre><code>
+void main() {
+    char (*p)[3]; 
+    printf("%d%d", sizeof(*p), sizeof(p));
+}
+            </code></pre>
+            <label><input type="radio" name="q31" value="A"> A) 12 4</label>
+            <label><input type="radio" name="q31" value="B"> B) 3 4</label>
+            <label><input type="radio" name="q31" value="C"> C) 1 3</label>
+            <label><input type="radio" name="q31" value="D"> D) 4 12</label>
+        </div>
+
+        <!-- Question 32 -->
+        <div class="question">
+            <h3>32. What is the output of the following program?</h3>
+            <pre><code>
+void main(void) {
+    char string[] = "hello world";
+    display(string);
+}
+
+void display(char *string) {
+    printf("%s", string);
+}
+            </code></pre>
+            <label><input type="radio" name="q32" value="A"> A) hello world</label>
+            <label><input type="radio" name="q32" value="B"> B) hello</label>
+            <label><input type="radio" name="q32" value="C"> C) Compiler error</label>
+            <label><input type="radio" name="q32" value="D"> D) None</label>
+        </div>
+
+        <!-- Question 33 -->
+        <div class="question">
+            <h3>33. What is the output of the following program?</h3>
+            <pre><code>
+#include <stdio.h>
+#define int char
+main() {
+    int i = 65;
+    printf("%d", sizeof(i));
+}
+            </code></pre>
+            <label><input type="radio" name="q33" value="A"> A) 2</label>
+            <label><input type="radio" name="q33" value="B"> B) 4</label>
+            <label><input type="radio" name="q33" value="C"> C) 8</label>
+            <label><input type="radio" name="q33" value="D"> D) 1</label>
+        </div>
+
+        <!-- Question 34 -->
+        <div class="question">
+            <h3>34. What is the output of the following program?</h3>
+            <pre><code>
+main() {
+    int i = 1, j = 2;
+    switch(i) {
+        case 1: printf("SY");
+        break;
+        case j: printf("TY");
+        break;
+    }
+}
+            </code></pre>
+            <label><input type="radio" name="q34" value="A"> A) SY</label>
+            <label><input type="radio" name="q34" value="B"> B) TY</label>
+            <label><input type="radio" name="q34" value="C"> C) SYTY</label>
+            <label><input type="radio" name="q34" value="D"> D) Error</label>
+        </div>
+
+        <!-- Question 35 -->
+        <div class="question">
+            <h3>35. What is the output of the following program?</h3>
+            <pre><code>
+main() {
+    char *p;
+    p = "ITWEEK2020";
+    printf("%c", *&*p);
+}
+            </code></pre>
+            <label><input type="radio" name="q35" value="A"> A) ITWEEK2020</label>
+            <label><input type="radio" name="q35" value="B"> B) I</label>
+            <label><input type="radio" name="q35" value="C"> C) IT</label>
+            <label><input type="radio" name="q35" value="D"> D) ITWEEK</label>
+        </div>
+
+        <!-- Question 36 -->
+        <div class="question">
+            <h3>36. What is the output of the following program?</h3>
+            <pre><code>
+#include <stdio.h>
+#define x 20
+main() {
+    #define x 50
+    printf("%d", x);
+}
+            </code></pre>
+            <label><input type="radio" name="q36" value="A"> A) 50</label>
+            <label><input type="radio" name="q36" value="B"> B) 20</label>
+            <label><input type="radio" name="q36" value="C"> C) 30</label>
+            <label><input type="radio" name="q36" value="D"> D) Error</label>
+        </div>
+
+        <!-- Question 37 -->
+        <div class="question">
+            <h3>37. What is the output of the following program?</h3>
+            <pre><code>
+main() {
+    int i = -1, j = -1, k = 0, l = 2, m;
+    k = i++ && j++ || l++;
+    printf("%d%d%d%d", i, j, l, k);
+}
+            </code></pre>
+            <label><input type="radio" name="q37" value="A"> A) -1 -1 2 1</label>
+            <label><input type="radio" name="q37" value="B"> B) -1 -1 2 0</label>
+            <label><input type="radio" name="q37" value="C"> C) 0 0 2 1</label>
+            <label><input type="radio" name="q37" value="D"> D) 0 0 2 0</label>
+        </div>
+
+        <!-- Question 38 -->
+        <div class="question">
+            <h3>38. Find out the output:</h3>
+            <pre><code>
+main() {
+    printf("%d", 5 > 4 + 5 > 4);
+}
+            </code></pre>
+            <label><input type="radio" name="q38" value="A"> A) 2</label>
+            <label><input type="radio" name="q38" value="B"> B) 1</label>
+            <label><input type="radio" name="q38" value="C"> C) 9</label>
+            <label><input type="radio" name="q38" value="D"> D) 0</label>
+        </div>
+
+
+       
+    </fieldset>
+    <button type="submit">Submit</button>
+</form>
+<div class="result" id="result"></div>
+        </section>
+    </main>
+    <footer>
+     <b>        #EPL IT Institude
+    </b>
+    </footer>
+   
+
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var result = document.getElementById('result');
+            result.textContent = 'Quiz submitted successfully!';
+            result.style.backgroundColor = '#1b9c85';
+            result.style.color = '#fff';
+        });
+
+        function updateProgressBar(value) {
+            document.getElementById('progress-bar').style.width = value + '%';
+        }
+
+        // Simulate progress
+        let progress = 0;
+        setInterval(() => {
+            if (progress < 100) {
+                progress += 10;
+                updateProgressBar(progress);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

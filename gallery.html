@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPL Institute Gallery</title>
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* Black background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #000000; /* Black background */
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .navbar a {
+            float: right; /* Positioned on the right */
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #333333; /* Slightly lighter black on hover */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+        }
+
+        .navbar a.home-icon::before {
+            content: "\f015"; /* Home icon from Font Awesome */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 8px;
+        }
+
+        h2 {
+            color: #1b9c85;
+            margin: 20px 0 10px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #ff004f;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+            gap: 10px;
+            margin: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: #ffffff; /* White background for each gallery item */
+            border: 2px solid #1b9c85; /* Green border */
+            transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px; /* Rounded corners for the image */
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            background-color: #f0f9f5; /* Light green background on hover */
+            border-color: #ff004f; /* Change border color to pink on hover */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr); /* 3 images per row on medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr); /* Two images per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr); /* One image per row on smallest screens */
+            }
+
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: right;
+                padding: 14px;
+            }
+             h2{
+                font-size: 22px;
+                text-align: center;
+            }
+            .navbar h3{
+                font-size: 18px;
+            }
+        }
+
+        /* Lightbox CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.7);
+        }
+        .home-tab {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #abe6db;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            animation: bounceIn 2s ease-in;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .home-tab:hover {
+            background-color: #ff004f;
+            transform: scale(1.05);
+            animation: jello 0.5s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="home-tab">Home</a> <div class="container"> 
+        </div>
+
+    <div id="gallery">
+        <h3>EPL IT Institute Gallery</h3>
+    
+          <h2> ISO Certificate</h2>
+          
+          <img src="img/iso.png" alt="" height="500" width="300"onclick="openLightbox(this.src)">
+
+         <!-- <div style="display: flex; justify-content: center; align-items: center; ">
+            <div class="gallery-container" style=" justify-content: center; align-items: center; ">
+                <div class="gallery-item">
+                
+                        <!-- <img src="img/iso.png" alt="Image" style="width: 230px; height: 400px;" onclick="openLightbox(this.src)"> -->
+                        <!-- <img src="img/iso.png" alt="1st Year Function Image 1" onclick="openLightbox(this.src)">
+                </div> -->
+         </div> -->
+        </div>
+        
+
+
+        <h2>One Year Complete Function <br> (2021-2022)</h2>
+        <div class="gallery-container">
+            <div class="gallery-item" >
+                <img src="img/image.png" alt="1st Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/image1.jpeg" alt="1st Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/image2.jpeg" alt="1st Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/image3.jpeg" alt="1st Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+
+        <h2>Two Year Complete Function <br> (2022-2023)</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="img/img.jpeg" alt="2nd Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img1.jpeg" alt="2nd Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/imgg2.jpeg" alt="2nd Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img3.jpeg" alt="2nd Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img4.jpeg" alt="2nd Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img5.jpeg" alt="2nd Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img6.jpeg" alt="2nd Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img7.jpeg" alt="2nd Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img8.jpeg" alt="2nd Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img9.jpeg" alt="2nd Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img10.jpeg" alt="2nd Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img11.jpeg" alt="2nd Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img12.jpeg" alt="2nd Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img13.jpeg" alt="2nd Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img14.jpeg" alt="2nd Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img15.jpeg" alt="2nd Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img16.jpeg" alt="2nd Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img17.jpeg" alt="2nd Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img18.jpeg" alt="2nd Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img19.jpeg" alt="2nd Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img19.jpeg" alt="2nd Year Function Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img20.jpeg" alt="2nd Year Function Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img21.jpeg" alt="2nd Year Function Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/img.jpeg" alt="2nd Year Function Image 4" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+        <h2>Mock Interview</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="img/mock/img1.png" alt="Mock Interview Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img2.png" alt="Mock Interview Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img3.png" alt="Mock Interview Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img4.png" alt="Mock Interview Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img5.png" alt="Mock Interview Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img6.png" alt="Mock Interview Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img7.png" alt="Mock Interview Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img8.png" alt="Mock Interview Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img9.png" alt="Mock Interview Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img10.png" alt="Mock Interview Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img11.png" alt="Mock Interview Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/mock/img12.png" alt="Mock Interview Image 4" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Lightbox Image">
+    </div>
+
+    <script>
+        // Function to open the lightbox with the clicked image
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        // Function to close the lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
